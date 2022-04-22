@@ -91,6 +91,7 @@ services:
     networks:
       - api-db
       - proxy
+      - redis
     volumes:
       - tactical_data:/opt/tactical
       - mesh_data:/meshcentral-data
