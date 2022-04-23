@@ -5,7 +5,7 @@
 ###
 
 ###
-## [T-RMM HAProxy config](#t-rmm-haproxy-config-1)
+## [T-RMM HAProxy config, baremetal](#t-rmm-haproxy-config,-baremetal-1)
 
 ###
 ## Docker T-RMM Setup
@@ -37,7 +37,7 @@
 4) Log into mesh.example.com and configure 2fa, as well as client remote access settings for notification, permission, etc.
 
 
-## T-RMM HAProxy config
+## T-RMM HAProxy config, baremetal
 
 Requires HAProxy 2.4+
 
