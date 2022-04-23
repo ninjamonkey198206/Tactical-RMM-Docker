@@ -16,6 +16,7 @@
 ###
 ## Docker T-RMM Setup
 ###
+
 1) In env file change GATEWAY, SUBNET, and IP variables for the various networks and containers, API, APP, and MESH URL variables to suit environment. Edit remaining env to suit your config.
 
   **If running HAProxy on same system as docker containers, set http and https exp port variables to 127.0.1.1:port**
@@ -37,7 +38,6 @@
 127.0.1.1 mesh-tactical.example.com mesh-tactical
 ```
 
-##
 ### First Run:
 
 1) Bring up stack once, then immediately stop the stack.
@@ -48,8 +48,9 @@
 
 4) Log into mesh.example.com and configure 2fa, as well as client remote access settings for notification, permission, etc.
 
-
+###
 ## T-RMM HAProxy config, baremetal
+###
 
 **Requires HAProxy 2.4+**
 
@@ -127,4 +128,3 @@ backend mesh-tactical.example.com_ipvANY
 ###
 ## T-RMM HAProxy config, PFSense
 ###
-Full HAProxy config example available in HAProxy-Example.cfg
