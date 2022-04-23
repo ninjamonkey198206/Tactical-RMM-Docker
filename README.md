@@ -6,6 +6,12 @@
 
 ###
 ## [T-RMM HAProxy config, baremetal](#t-rmm-haproxy-config-baremetal-1)
+###
+
+###
+## [T-RMM HAProxy config, PFSense](#t-rmm-haproxy-config-pfsense-1)
+###
+
 
 ###
 ## Docker T-RMM Setup
@@ -115,4 +121,7 @@ backend mesh-tactical.example.com_ipvANY
 ```
   Test access to rmm-tactical.example.com and mesh-tactical.example.com
 
+###
+## T-RMM HAProxy config, PFSense
+###
 Full HAProxy config example available in HAProxy-Example.cfg
