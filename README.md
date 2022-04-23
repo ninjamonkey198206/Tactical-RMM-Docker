@@ -7,7 +7,7 @@
 ###
 ## Docker T-RMM Setup
 ###
-1) Change GATEWAY, SUBNET, and IP variables to suit environment availability, and API, APP, and MESH url variables as well. Edit remaining env to suit.
+1) In env file change GATEWAY, SUBNET, and IP variables for the various networks and containers, API, APP, and MESH URL variables to suit environment. Edit remaining env to suit.
 
 2) If running HAProxy on same system as docker containers, set http and https exp port variables to 127.0.1.1:port
 
