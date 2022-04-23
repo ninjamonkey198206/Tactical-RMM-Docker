@@ -57,7 +57,7 @@
 
 Make sure firewall rules are in place, then edit HAProxy config.
 
-Full HAProxy config example available in [HAProxy-Example.cfg]()
+Full HAProxy config example available in [HAProxy-Example.cfg](https://github.com/ninjamonkey198206/Tactical-RMM-Docker/blob/main/HAProxy-Example.cfg)
 
 ### Example for T-RMM, edit urls and exp ports to suit environment:
   
