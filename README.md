@@ -5,6 +5,9 @@
 ###
 
 ###
+## [T-RMM HAProxy config](#t-rmm-haproxy-config-1)
+
+###
 ## Docker T-RMM Setup
 ###
 1) In env file change GATEWAY, SUBNET, and IP variables for the various networks and containers, API, APP, and MESH URL variables to suit environment. Edit remaining env to suit.
@@ -34,7 +37,7 @@
 4) Log into mesh.example.com and configure 2fa, as well as client remote access settings for notification, permission, etc.
 
 
-## T-RMM HAProxy config: 
+## T-RMM HAProxy config
 
 Requires HAProxy 2.4+
 
