@@ -24,6 +24,13 @@
 -A OUTPUT -o trmmproxy -m conntrack --ctstate NEW,ESTABLISHED,RELATED -j ACCEPT
 -A OUTPUT -o trmmnats -m conntrack --ctstate NEW,ESTABLISHED,RELATED -j ACCEPT
 ```
+5) Add RMM, API, and Mesh sites to /etc/hosts
+```text
+127.0.1.1 api-tactical.example.com api-tactical
+127.0.1.1 rmm-tactical.example.com rmm-tactical
+127.0.1.1 mesh-tactical.example.com mesh-tactical
+```
+
 ##
 ### First Run:
 
@@ -42,14 +49,7 @@ Requires HAProxy 2.4+
 
 Ubuntu/Debian:
 
-1) Add RMM, API, and Mesh sites to /etc/hosts
-```text
-127.0.1.1 api-tactical.example.com api-tactical
-127.0.1.1 rmm-tactical.example.com rmm-tactical
-127.0.1.1 mesh-tactical.example.com mesh-tactical
-```
-
-5) Make sure firewall rules are in place, then edit HAProxy config.
+1) Make sure firewall rules are in place, then edit HAProxy config. Full HAProxy config example available in HAProxy-Example.cfg
   Example for T-RMM, assumes existing shared http and https frontends, SSL offloading, and http to https redirect already in place and working, edit urls and exp ports to suit environment:
   
   If not already present, add to both http and https shared frontends
@@ -85,6 +85,8 @@ backend rmm-tactical.example.com_ipvANY
         timeout connect         30000
         timeout server          30000
         retries                 3
+        http-request add-header X-Forwarded-Host %[req.hdr(Host)]
+        http-request add-header X-Forwarded-Proto https
         server                  rmm 127.0.1.1:4443 ssl  verify none
 
 
