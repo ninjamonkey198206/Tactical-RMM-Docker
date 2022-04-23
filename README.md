@@ -5,7 +5,7 @@
 ###
 
 ###
-## [T-RMM HAProxy config, baremetal](#t-rmm-haproxy-config,-baremetal-1)
+## [T-RMM HAProxy config, baremetal](#t-rmm-haproxy-config-baremetal-1)
 
 ###
 ## Docker T-RMM Setup
