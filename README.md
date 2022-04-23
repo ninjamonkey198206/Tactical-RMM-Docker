@@ -23,7 +23,7 @@
 ```
 
 
-# First Run:
+### First Run:
 
 1) Bring up stack once, then immediately stop the stack.
 
@@ -34,7 +34,7 @@
 4) Log into mesh.example.com and configure 2fa, as well as client remote access settings for notification, permission, etc.
 
 
-# T-RMM HAProxy config: 
+## T-RMM HAProxy config: 
 
 Requires HAProxy 2.4+
 
