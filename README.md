@@ -10,13 +10,13 @@
 ###
 ## Docker T-RMM Setup
 ###
-1) In env file change GATEWAY, SUBNET, and IP variables for the various networks and containers, API, APP, and MESH URL variables to suit environment. Edit remaining env to suit.
+1) In env file change GATEWAY, SUBNET, and IP variables for the various networks and containers, API, APP, and MESH URL variables to suit environment. Edit remaining env to suit your config.
 
 2) If running HAProxy on same system as docker containers, set http and https exp port variables to 127.0.1.1:port
 
-3) Keep NATS exp port variable as 4222 and ensure firewall access. This requires a TCP only reverse proxy, and is not http traffic, so it cannot be routed through HAProxy while routing the rest through it until configuration quirks are ironed out.
+3) Keep NATS exp port variable as 4222 and ensure firewall access. This requires a TCP only reverse proxy, and is not http traffic, so it cannot be routed through HAProxy on port 443 along with the rest.
 
-4) If running IPTables firewall in Drop all by default with HAProxy on the same system, make sure to add the following:
+4) If running IPTables firewall in Drop All by default with HAProxy on the same system, make sure to add the following:
 ```text
 # This ensures communication because HAProxy and Docker don't play nice with Drop all by default
 -A INPUT -i trmmproxy -p tcp -m multiport --sports 4443,8080 -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT
@@ -24,8 +24,7 @@
 -A OUTPUT -o trmmproxy -m conntrack --ctstate NEW,ESTABLISHED,RELATED -j ACCEPT
 -A OUTPUT -o trmmnats -m conntrack --ctstate NEW,ESTABLISHED,RELATED -j ACCEPT
 ```
-
-
+##
 ### First Run:
 
 1) Bring up stack once, then immediately stop the stack.
