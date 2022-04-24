@@ -138,3 +138,19 @@ backend mesh-tactical.example.com_ipvANY
 ###
 ## T-RMM HAProxy config, PFSense
 ###
+
+### Example for T-RMM, edit urls and ports to suit environment:
+
+**Go to System > Package Manager**
+
+![Screenshot 2022-03-31 125739](https://user-images.githubusercontent.com/24654529/161121728-ae0c7023-9896-4ec4-bb44-03db3760cdb7.png)
+###
+
+**Select Available Packages**
+
+![Screenshot 2022-03-31 130058](https://user-images.githubusercontent.com/24654529/161121800-e5babfd9-29ed-433a-b0c7-850a5aa5b017.png)
+###
+
+**Find and install haproxy-devel**
+
+![Screenshot 2022-03-31 130322](https://user-images.githubusercontent.com/24654529/161121985-953e24a6-bcaa-418d-a1e4-1ef62a193623.png)
