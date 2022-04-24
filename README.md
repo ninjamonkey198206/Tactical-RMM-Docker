@@ -14,7 +14,7 @@
 
 
 ###
-## Docker T-RMM Setup
+# Docker T-RMM Setup
 ###
 
 1) In env file change GATEWAY, SUBNET, and IP variables for the various networks and containers, API, APP, and MESH URL variables to suit environment. Edit remaining env to suit your config.
@@ -54,12 +54,12 @@
 
 ##
 ###
-## T-RMM HAProxy config, baremetal
+# T-RMM HAProxy config, baremetal
 ###
 
 **Requires HAProxy 2.4+**
 
-### Ubuntu/Debian:
+## Ubuntu/Debian:
 
 Make sure firewall rules are in place, then edit HAProxy config.
 
@@ -138,13 +138,24 @@ backend mesh-tactical.example.com_ipvANY
 
 ##
 ###
-## T-RMM HAProxy config, PFSense
+# T-RMM HAProxy config, PFSense
 ###
 
 ### Example for T-RMM, edit urls and ports to suit environment:
 
+## [Install HAProxy-devel package](install-haproxy-devel-package-1)
+
+## [Firewall configuration](firewall-configuration-1)
+
+## [General HAProxy settings](general-haproxy-settings-1)
+
+## [Shared HTTP to HTTPS redirect frontend](shared-http-to-https-redirect-frontend-1)
+
+## [Shared HTTPS frontend]()
+
 ###
-### Install HAProxy-devel package
+## Install HAProxy-devel package
+###
 **Go to System > Package Manager**
 
 ![Screenshot 2022-04-24 092054](https://user-images.githubusercontent.com/24654529/164981179-a8516d84-4554-4007-837a-af70f2396390.png)
@@ -161,7 +172,7 @@ backend mesh-tactical.example.com_ipvANY
 ###
 
 ### 
-### Firewall configuration
+## Firewall configuration
 ### 
 
 **Go to Firewall > Rules**
@@ -208,7 +219,7 @@ Description = HAProxy_HTTP
 ###
 
 ###
-### General HAProxy settings
+## General HAProxy settings
 ###
 
 **Go to Services > HAProxy**
@@ -235,7 +246,7 @@ Max SSL Diffie-Hellman size = 2048 or 4096 (dealers choice)
 ###
 
 ###
-### Shared HTTP to HTTPS redirect frontend 
+## Shared HTTP to HTTPS redirect frontend 
 ###
 
 
