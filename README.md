@@ -58,9 +58,9 @@
 
 Make sure firewall rules are in place, then edit HAProxy config.
 
-Full HAProxy config example available in [HAProxy-Example.cfg](https://github.com/ninjamonkey198206/Tactical-RMM-Docker/blob/main/HAProxy-Example.cfg)
+**Assumes existing shared http to https redirect and https frontends. See full HAProxy config example in [HAProxy-Example.cfg](https://github.com/ninjamonkey198206/Tactical-RMM-Docker/blob/main/HAProxy-Example.cfg) if starting from scratch for reference to configure global, default, and shared http redirect and https front ends before continuing.**
 
-### Example for T-RMM, edit urls and exp ports to suit environment:
+**Example for T-RMM, edit urls and ports to suit environment:**
   
   If not already present, add to both http and https shared frontends
 ```text
@@ -123,6 +123,8 @@ backend mesh-tactical.example.com_ipvANY
         http-request add-header X-Forwarded-Proto https
         server                  mesh 127.0.1.1:4443 ssl  verify none
 ```
+  Restart HAProxy service.
+  
   Test access to rmm-tactical.example.com and mesh-tactical.example.com
 
 ###
