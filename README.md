@@ -151,6 +151,8 @@ backend mesh-tactical.example.com_ipvANY
 
 ## [Shared HTTP to HTTPS redirect frontend](#shared-http-to-https-redirect-frontend-1)
 
+## [Shared HTTPS frontend](#shared-https-frontend-1)
+
 ## [Mesh backend](#mesh-backend-1)
 
 ## [Mesh Websockets backend](#mesh-websockets-backend-1)
