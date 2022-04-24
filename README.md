@@ -281,30 +281,16 @@ Third action = Action: http-request redirect , Condition acl names: mesh , rule:
 ![Screenshot 2022-04-24 111257](https://user-images.githubusercontent.com/24654529/164986860-dd9dd3d0-445a-4657-be06-dbbc2e3d6422.png)
 ###
 
+**Advanced Settings:**
 
+Use "forwardfor" option = checked
 
-Scroll to the section titled "Default backend, access control lists and actions" and in the Action Control lists area click the down arrow to create a new acl for your server. Enter the hostname in the Name field, change the Expression to Host matches, and enter the FQDN of the website/service into the Value field.
+Use "httpclose" option = http-server-close
 
-
-
-Scroll down to the Actions area of the section and click the down arrow to create a new action. In the Action field, select http-request redirect, enter scheme https into the rule field, and enter the hostname into the Condition acl names field.
-
-
-
-Scroll down and select None for the Default Backend.
-
-
-
-Scroll down to the Advanced settings section. Tick the Use "forwardfor" option box, select http-server-close for Use "httpclose" option, and add/copy-paste
+Advanced pass thru =
 ```text
 http-request add-header         X-Real-IP %[src]
 ```
-to the Advanced pass thru text box.
-
-
-
-
-
 ![Screenshot 2022-04-24 112830](https://user-images.githubusercontent.com/24654529/164986864-d106d656-5c14-44bc-a64e-e6bf72126351.png)
 ###
 
