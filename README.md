@@ -159,6 +159,8 @@ backend mesh-tactical.example.com_ipvANY
 
 ## [RMM backend](#rmm-backend-1)
 
+## [RMM frontend](#rmm-frontend-1)
+
 ###
 ## Install HAProxy-devel package
 ###
@@ -255,7 +257,6 @@ Max SSL Diffie-Hellman size = 2048 or 4096 (dealers choice)
 ## Shared HTTP to HTTPS redirect frontend 
 ###
 
-
 **Go to the Frontend tab. Click the button to add a new frontend.**
 
 **This shared http frontend will redirect all configured entries to their HTTPS equivalent and allow SSL offloading, as well as both internal and external access to the sites/services via URL.**
@@ -317,6 +318,8 @@ Save and apply changes.
 ## Shared HTTPS frontend
 ###
 
+**Copy the http to https redirect frontend, and edit it to match the settings below. Remove unnecessary settings.**
+
 **Fill in the entries as shown in the screen captures below:**
 
 Name = https_shared
@@ -361,6 +364,8 @@ Save and apply changes.
 ## Mesh backend
 ###
 
+**Go to the Backend tab and add a new backend.**
+
 **Fill in the entries as shown in the screen captures below, changing entries to suit environment. Assumes port 4443 exposed on T-RMM proxy:**
 
 Name = mesh.example.com
@@ -395,6 +400,8 @@ Save and apply changes.
 ###
 ## Mesh Websockets backend
 ###
+
+**Copy the mesh backend and edit it**
 
 **Fill in the entries as shown in the screen captures below, changing entries to suit environment:**
 
@@ -431,9 +438,11 @@ Save and apply changes.
 ## RMM backend
 ###
 
+**Copy the mesh backend and edit it**
+
 **Fill in the entries as shown in the screen captures below, changing entries to suit environment:**
 
-Name = rmm.example.com-websocket
+Name = rmm.example.com
 
 Server list = Mode: active , Name: rmm , Forwardto: Address+Port , Address: host server IP , Port: 4443 , Encrypt(SSL): yes/checked , SSL checks: no/unchecked
 
@@ -460,3 +469,53 @@ http-request add-header X-Forwarded-Proto https
 ###
 
 Save and apply changes.
+
+###
+## RMM frontend
+###
+
+**Go to the Frontend tab and add a new frontend**
+
+**Fill in the entries as shown in the screen captures below:**
+
+Name = rmm
+
+Description = rmm.example.com
+
+Status = Active
+
+Shared Frontend = checked
+
+Primary frontend = https_shared - http
+
+![Screenshot 2022-04-24 130914](https://user-images.githubusercontent.com/24654529/164990542-d4f6ef95-454e-490e-9d3c-5c4d48db4da9.png)
+###
+
+**Access Control lists:**
+
+First ACL = Name: rmm , Expression: Host matches , Value: rmm.example.com
+
+Second ACL = Name: api , Expression: Host matches , Value: api.example.com
+
+Third ACL = Name: is_websocket , Expression: Custom acl , Value: hdr(Upgrade) -i WebSocket
+
+Fourth ACL = Name: mesh , Expression: Host matches , Value: mesh.example.com
+
+**Actions:**
+
+First action = Action: Use Backend , Condition acl names: rmm , backend: rmm.example.com
+
+Second action = Action: Use Backend , Condition acl names: api , backend: rmm.example.com
+
+Third action = Action: Use Backend , Condition acl names: is_websocket mesh , backend: mesh.example.com-websocket
+
+Fourth action = Action: Use Backend , Condition acl names: mesh , backend: mesh.example.com
+
+**Default Backend:** None
+
+![Screenshot 2022-04-24 131654](https://user-images.githubusercontent.com/24654529/164990983-b0b3ae80-15db-4aa9-a92f-3959c3c77be4.png)
+###
+
+Save and apply changes.
+
+Test access to rmm.example.com and mesh.example.com
