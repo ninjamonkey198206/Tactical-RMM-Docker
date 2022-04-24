@@ -243,13 +243,45 @@ Max SSL Diffie-Hellman size = 2048 or 4096 (dealers choice)
 
 **This shared http frontend will redirect all configured entries to their HTTPS equivalent and allow SSL offloading, as well as both internal and external access to the sites/services via URL.**
 
-Fill in the entries as shown in the screen captures below:
+**Fill in the entries as shown in the screen captures below:**
+
+Name = http_shared
+
+Description = http_shared
+
+Status = Active
+
+External address = Listen address: any (IPv4), Port: 80
+
+Type = http / https(offloading)
 
 ![Screenshot 2022-04-24 111255](https://user-images.githubusercontent.com/24654529/164986858-939ae79b-13d4-449a-8141-20c4ed209faa.png)
+###
+
+**Edit entries to suit your URLs**
+
+**Access Control lists:**
+
+First ACL = Name: rmm , Expression: Host matches , Value: rmm.example.com
+
+Second ACL = Name: api , Expression: Host matches , Value: api.example.com
+
+Third ACL = Name: mesh , Expression: Host matches , Value: mesh.example.com
+
+**Actions:**
+
+First action = Action: http-request redirect , Condition acl names: rmm , rule: scheme https
+
+Second action = Action: http-request redirect , Condition acl names: api , rule: scheme https
+
+Third action = Action: http-request redirect , Condition acl names: mesh , rule: scheme https
+
+**Default Backend:** None
 
 ![Screenshot 2022-04-24 111257](https://user-images.githubusercontent.com/24654529/164986860-dd9dd3d0-445a-4657-be06-dbbc2e3d6422.png)
+###
 
-![Screenshot 2022-04-24 112830](https://user-images.githubusercontent.com/24654529/164986864-d106d656-5c14-44bc-a64e-e6bf72126351.png)
+
 
 Scroll to the section titled "Default backend, access control lists and actions" and in the Action Control lists area click the down arrow to create a new acl for your server. Enter the hostname in the Name field, change the Expression to Host matches, and enter the FQDN of the website/service into the Value field.
 
@@ -270,5 +302,10 @@ http-request add-header         X-Real-IP %[src]
 to the Advanced pass thru text box.
 
 
+
+
+
+![Screenshot 2022-04-24 112830](https://user-images.githubusercontent.com/24654529/164986864-d106d656-5c14-44bc-a64e-e6bf72126351.png)
+###
 
 Save and apply changes.
