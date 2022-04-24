@@ -143,13 +143,13 @@ backend mesh-tactical.example.com_ipvANY
 
 ### Example for T-RMM, edit urls and ports to suit environment:
 
-## [Install HAProxy-devel package](install-haproxy-devel-package-1)
+## [Install HAProxy-devel package](#install-haproxy-devel-package-1)
 
-## [Firewall configuration](firewall-configuration-1)
+## [Firewall configuration](#firewall-configuration-1)
 
-## [General HAProxy settings](general-haproxy-settings-1)
+## [General HAProxy settings](#general-haproxy-settings-1)
 
-## [Shared HTTP to HTTPS redirect frontend](shared-http-to-https-redirect-frontend-1)
+## [Shared HTTP to HTTPS redirect frontend](#shared-http-to-https-redirect-frontend-1)
 
 ## [Shared HTTPS frontend]()
 
