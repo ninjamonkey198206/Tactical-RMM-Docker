@@ -31,6 +31,7 @@
 -A OUTPUT -o trmmproxy -m conntrack --ctstate NEW,ESTABLISHED,RELATED -j ACCEPT
 -A OUTPUT -o trmmnats -m conntrack --ctstate NEW,ESTABLISHED,RELATED -j ACCEPT
 ```
+###
 2) Add RMM, API, and Mesh sites to /etc/hosts
 ```text
 127.0.1.1 api-tactical.example.com api-tactical
@@ -67,6 +68,7 @@ Make sure firewall rules are in place, then edit HAProxy config.
 option                          forwardfor
 http-request add-header         X-Real-IP %[src]
 ```
+###
   Add http to https redirects for Mesh, RMM, and API in shared http frontend
 ```text
 acl                     rmm     var(txn.txnhost) -m str -i rmm-tactical.example.com
@@ -76,6 +78,7 @@ http-request redirect scheme https  if  rmm
 http-request redirect scheme https  if  api
 http-request redirect scheme https  if  mesh
 ```
+###
   Add https frontend Mesh, RMM, and API entries
 ```text
 acl                     rmm     var(txn.txnhost) -m str -i rmm-tactical.example.com
@@ -87,6 +90,7 @@ use_backend rmm-tactical.example.com_ipvANY  if  api
 use_backend mesh-tactical.example.com-websocket_ipvANY  if  is_websocket mesh
 use_backend mesh-tactical.example.com_ipvANY  if  mesh
 ```
+###
   Add backends
 ```text
 backend rmm-tactical.example.com_ipvANY
@@ -123,6 +127,7 @@ backend mesh-tactical.example.com_ipvANY
         http-request add-header X-Forwarded-Proto https
         server                  mesh 127.0.1.1:4443 ssl  verify none
 ```
+###
   Restart HAProxy service.
   
   Test access to rmm-tactical.example.com and mesh-tactical.example.com
