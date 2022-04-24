@@ -326,8 +326,25 @@ Type = http / https(offloading)
 ![Screenshot 2022-04-24 120859](https://user-images.githubusercontent.com/24654529/164988154-d12fb654-effe-410a-a309-b0d54bbe0bb8.png)
 ###
 
+**Advanced Settings:**
+
+Use "forwardfor" option = checked
+
+Use "httpclose" option = http-server-close
+
+Advanced pass thru =
+```text
+http-request add-header         X-Real-IP %[src]
+```
+
 ![Screenshot 2022-04-24 112830](https://user-images.githubusercontent.com/24654529/164988116-735f9376-a5d5-4190-b563-22937f528324.png)
 ###
+
+**SSL Offloading**
+
+Certificate = configured LetsEncrypt Server cert , Add ACL for certificate Subject Alternative Names : checked
+
+OCSP = checked
 
 ![Screenshot 2022-04-24 121022](https://user-images.githubusercontent.com/24654529/164988289-16546962-554d-4008-92fc-9bb0ed86f7bf.png)
 ###
