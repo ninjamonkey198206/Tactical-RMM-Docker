@@ -394,6 +394,37 @@ Save and apply changes.
 ## Mesh Websockets backend
 ###
 
+**Fill in the entries as shown in the screen captures below, changing entries to suit environment:**
+
+Name = mesh.example.com-websocket
+
+Server list = Mode: active , Name: mesh-websocket , Forwardto: Address+Port , Address: host server IP , Port: 4443 , Encrypt(SSL): yes/checked , SSL checks: no/unchecked
+
+Connection timeout = 3000
+
+Server timeout = 3000
+
+Retries = 3
+
+Health check method = none
+
+![Screenshot 2022-04-24 125249](https://user-images.githubusercontent.com/24654529/164989799-5a5ad85d-0180-4597-910d-96809037c35f.png)
+###
+
+**Advanced settings**
+
+Backend pass thru =
+```text
+timeout tunnel      3600000
+http-request add-header X-Forwarded-Host %[req.hdr(Host)]
+http-request add-header X-Forwarded-Proto https
+```
+
+![Screenshot 2022-04-24 125312](https://user-images.githubusercontent.com/24654529/164989801-ee2e11d1-b643-4400-be35-3576e59884d4.png)
+###
+
+Save and apply changes.
+
 ###
 ## RMM backend
 ###
