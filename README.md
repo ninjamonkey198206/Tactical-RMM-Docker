@@ -18,10 +18,13 @@
 ###
 
 1) In env file change GATEWAY, SUBNET, and IP variables for the various networks and containers, API, APP, and MESH URL variables to suit environment. Edit remaining env to suit your config.
+###
 
   **If running HAProxy on same system as docker containers, set http and https exp port variables to 127.0.1.1:port**
+###
 
   **Keep NATS exp port variable as 4222 and ensure firewall access. This requires a TCP only reverse proxy, and is not http traffic, so it cannot be routed through a proxy on port 443 along with the rest.**
+###
 
   **If running IPTables firewall in Drop All by default with HAProxy on the same system, make sure to add the following:**
 ```text
@@ -38,7 +41,7 @@
 127.0.1.1 rmm-tactical.example.com rmm-tactical
 127.0.1.1 mesh-tactical.example.com mesh-tactical
 ```
-
+###
 ### First Run:
 
 1) Bring up stack once, then immediately stop the stack.
