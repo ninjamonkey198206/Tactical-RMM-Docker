@@ -141,6 +141,7 @@ backend mesh-tactical.example.com_ipvANY
 
 ### Example for T-RMM, edit urls and ports to suit environment:
 
+### Install HAProxy-devel package
 **Go to System > Package Manager**
 
 ![Screenshot 2022-03-31 125739](https://user-images.githubusercontent.com/24654529/161121728-ae0c7023-9896-4ec4-bb44-03db3760cdb7.png)
@@ -154,3 +155,51 @@ backend mesh-tactical.example.com_ipvANY
 **Find and install haproxy-devel**
 
 ![Screenshot 2022-03-31 130322](https://user-images.githubusercontent.com/24654529/161121985-953e24a6-bcaa-418d-a1e4-1ef62a193623.png)
+###
+###
+
+### Firewall configuration
+###
+
+**Go to Firewall > Rules**
+
+![Screenshot 2022-03-31 135327](https://user-images.githubusercontent.com/24654529/161128877-85aec1f2-c829-4700-81ca-7e78a112d891.png)
+###
+
+**Select the WAN tab**
+
+![Screenshot 2022-03-31 135621](https://user-images.githubusercontent.com/24654529/161129178-55784d70-87d7-4d1d-b980-80c211b17bd0.png)
+###
+
+**Add the following two rules to the bottom of the list, nothing else should be using ports 80 and 443:**
+
+![Screenshot 2022-03-31 135726](https://user-images.githubusercontent.com/24654529/161129621-9809859c-f50f-45f9-bef8-635036189fef.png)
+###
+
+**HTTP rule:**
+
+Action = Pass
+
+Interface = WAN
+
+Address Family = IPv4
+
+Source = any
+
+Destination = This firewall (self)
+
+Destination Port Range = From: HTTP (80), To: HTTP (80)
+
+Log = Log packets ***optional***
+
+Description = HAProxy_HTTP
+
+![Screenshot 2022-03-31 140214](https://user-images.githubusercontent.com/24654529/161130992-8d2af2d4-a448-4b2a-a2dc-f9e01174b85a.png)
+###
+
+**Save the new rule and apply changes**
+###
+
+**Create a duplicate rule, changing the port to 443 and the description for HTTPS**
+
+**Enable the new rules.**
