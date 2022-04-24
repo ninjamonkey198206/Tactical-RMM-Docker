@@ -163,7 +163,7 @@ backend mesh-tactical.example.com_ipvANY
 
 **Go to Firewall > Rules**
 
-![Screenshot 2022-03-31 135327](https://user-images.githubusercontent.com/24654529/161128877-85aec1f2-c829-4700-81ca-7e78a112d891.png)
+![Screenshot 2022-04-24 093246](https://user-images.githubusercontent.com/24654529/164981702-69ec6cf0-65cb-44dc-9b98-4ca963d01fa7.png)
 ###
 
 **Select the WAN tab**
@@ -171,9 +171,9 @@ backend mesh-tactical.example.com_ipvANY
 ![Screenshot 2022-03-31 135621](https://user-images.githubusercontent.com/24654529/161129178-55784d70-87d7-4d1d-b980-80c211b17bd0.png)
 ###
 
-**Add the following two rules to the bottom of the list, nothing else should be using ports 80 and 443:**
+**Add the HAProxy_HTTP rule to the bottom of the list. Nothing else should have ports 80 or 443 in use.**
 
-![Screenshot 2022-03-31 135726](https://user-images.githubusercontent.com/24654529/161129621-9809859c-f50f-45f9-bef8-635036189fef.png)
+![Screenshot 2022-03-31 135726](https://user-images.githubusercontent.com/24654529/164981936-f61793b4-ce31-45fc-ae07-5026e6f8c04c.png)
 ###
 
 **HTTP rule:**
