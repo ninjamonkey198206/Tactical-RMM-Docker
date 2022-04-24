@@ -151,7 +151,11 @@ backend mesh-tactical.example.com_ipvANY
 
 ## [Shared HTTP to HTTPS redirect frontend](#shared-http-to-https-redirect-frontend-1)
 
-## [Shared HTTPS frontend](#shared-https-frontend-1)
+## [Mesh backend](#mesh-backend-1)
+
+## [Mesh Websockets backend](#mesh-websockets-backend-1)
+
+## [RMM backend](#rmm-backend-1)
 
 ###
 ## Install HAProxy-devel package
@@ -350,3 +354,46 @@ OCSP = checked
 ###
 
 Save and apply changes.
+
+###
+## Mesh backend
+###
+
+**Fill in the entries as shown in the screen captures below, changing entries to suit environment. Assumes port 4443 exposed on T-RMM proxy:**
+
+Name = mesh.example.com
+
+Server list = Mode: active , Name: mesh , Forwardto: Address+Port , Address: host server IP , Port: 4443 , Encrypt(SSL): yes/checked , SSL checks: no/unchecked
+
+Connection timeout = 15000
+
+Server timeout = 15000
+
+Retries = 3
+
+Health check method = none
+
+![Screenshot 2022-04-24 124136](https://user-images.githubusercontent.com/24654529/164989354-4acd5e67-c76d-4259-85b8-94a980b8db7a.png)
+###
+
+**Advanced settings**
+
+Backend pass thru =
+```text
+timeout tunnel      15000
+http-request add-header X-Forwarded-Host %[req.hdr(Host)]
+http-request add-header X-Forwarded-Proto https
+```
+
+![Screenshot 2022-04-24 124205](https://user-images.githubusercontent.com/24654529/164989357-d88d3090-24e1-4449-8da2-6885616388ba.png)
+###
+
+Save and apply changes.
+
+###
+## Mesh Websockets backend
+###
+
+###
+## RMM backend
+###
