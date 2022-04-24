@@ -201,7 +201,7 @@ Description = HAProxy_HTTP
 
 **Save the new rule and apply changes**
 
-**Copy the HTTP rule, changing the To and From ports to 443 and the description to HAProxy_HTTPS**
+**Copy the HTTP rule, changing the To and From ports to HTTPS (443) and the description to HAProxy_HTTPS**
 
 **Save the new rule and apply changes**
 ###
