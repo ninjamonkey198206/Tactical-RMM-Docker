@@ -143,6 +143,7 @@ backend mesh-tactical.example.com_ipvANY
 
 ### Example for T-RMM, edit urls and ports to suit environment:
 
+###
 ### Install HAProxy-devel package
 **Go to System > Package Manager**
 
@@ -159,9 +160,9 @@ backend mesh-tactical.example.com_ipvANY
 ![Screenshot 2022-04-24 092647](https://user-images.githubusercontent.com/24654529/164981427-fe2e47d4-7383-422e-9d19-bf2dbb2c2e50.png)
 ###
 
-###
+### 
 ### Firewall configuration
-###
+### 
 
 **Go to Firewall > Rules**
 
@@ -207,28 +208,60 @@ Description = HAProxy_HTTP
 ###
 
 ###
+### General HAProxy settings
+###
+
+**Go to Services > HAProxy**
+
+![Screenshot 2022-04-24 110804](https://user-images.githubusercontent.com/24654529/164985595-87a50a82-9edb-4906-bc9a-96dcf5c17e0e.png)
+###
+
+**Select the Settings tab**
+
+**Fill in the entries as shown in the screen capture below, leaving the rest at defaults or tune them to your preference:**
+
+Enable HAProxy = Checked
+
+Reload behavior = Checked (closes existing connections to force reconnect to updated process after haproxy restart)
+
+SSL/TLS Compatibility Mode = Intermediate (allows for maximum compatibility with all devices, select Modern at your own risk)
+
+Max SSL Diffie-Hellman size = 2048 or 4096 (dealers choice)
+
+![Screenshot 2022-04-24 101811](https://user-images.githubusercontent.com/24654529/164985436-3f83dc55-b6c3-4007-bd9b-6fded3f1e4e7.png)
+###
+
+**Save settings and apply changes**
+###
+
+###
 ### Shared HTTP to HTTPS redirect frontend 
 ###
+
 
 **Go to the Frontend tab. Click the button to add a new frontend.**
 
 **This shared http frontend will redirect all configured entries to their HTTPS equivalent and allow SSL offloading, as well as both internal and external access to the sites/services via URL.**
 
-Fill in the entries as shown in the screen capture below:
+Fill in the entries as shown in the screen captures below:
 
-![Screenshot 2022-03-31 144739](https://user-images.githubusercontent.com/24654529/161137213-1c992c70-c608-48f9-b2ec-6ba3f8852bb1.png)
+![Screenshot 2022-04-24 111255](https://user-images.githubusercontent.com/24654529/164986858-939ae79b-13d4-449a-8141-20c4ed209faa.png)
+
+![Screenshot 2022-04-24 111257](https://user-images.githubusercontent.com/24654529/164986860-dd9dd3d0-445a-4657-be06-dbbc2e3d6422.png)
+
+![Screenshot 2022-04-24 112830](https://user-images.githubusercontent.com/24654529/164986864-d106d656-5c14-44bc-a64e-e6bf72126351.png)
 
 Scroll to the section titled "Default backend, access control lists and actions" and in the Action Control lists area click the down arrow to create a new acl for your server. Enter the hostname in the Name field, change the Expression to Host matches, and enter the FQDN of the website/service into the Value field.
 
-![Screenshot 2022-03-31 145213](https://user-images.githubusercontent.com/24654529/161138441-db439999-e8f7-46cb-b4ac-ac324e9983a9.png)
+
 
 Scroll down to the Actions area of the section and click the down arrow to create a new action. In the Action field, select http-request redirect, enter scheme https into the rule field, and enter the hostname into the Condition acl names field.
 
-![Screenshot 2022-03-31 145855](https://user-images.githubusercontent.com/24654529/161139297-01ebd984-a571-41c0-8cd0-f48dfb0e0b1b.png)
+
 
 Scroll down and select None for the Default Backend.
 
-![Screenshot 2022-03-31 150034](https://user-images.githubusercontent.com/24654529/161139524-65658f7a-11ca-454d-adae-861954dcac9f.png)
+
 
 Scroll down to the Advanced settings section. Tick the Use "forwardfor" option box, select http-server-close for Use "httpclose" option, and add/copy-paste
 ```text
@@ -236,6 +269,6 @@ http-request add-header         X-Real-IP %[src]
 ```
 to the Advanced pass thru text box.
 
-![Screenshot 2022-03-31 150416](https://user-images.githubusercontent.com/24654529/161140094-cd0082e0-24b6-4710-817c-6f9a8a59ef75.png)
+
 
 Save and apply changes.
