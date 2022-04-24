@@ -311,9 +311,25 @@ Save and apply changes.
 ## Shared HTTPS frontend
 ###
 
+**Fill in the entries as shown in the screen captures below:**
+
+Name = https_shared
+
+Description = https_shared
+
+Status = Active
+
+External address = Listen address: any (IPv4) , Port: 443 , SSL Offloading: checked
+
+Type = http / https(offloading)
+
 ![Screenshot 2022-04-24 120859](https://user-images.githubusercontent.com/24654529/164988154-d12fb654-effe-410a-a309-b0d54bbe0bb8.png)
+###
 
 ![Screenshot 2022-04-24 112830](https://user-images.githubusercontent.com/24654529/164988116-735f9376-a5d5-4190-b563-22937f528324.png)
+###
 
-![Screenshot 2022-04-24 121022](https://user-images.githubusercontent.com/24654529/164988098-5d9de00d-3d04-4ff0-bffe-6cfdc4c14d10.png)
+![Screenshot 2022-04-24 121022](https://user-images.githubusercontent.com/24654529/164988289-16546962-554d-4008-92fc-9bb0ed86f7bf.png)
+###
 
+Save and apply changes.
