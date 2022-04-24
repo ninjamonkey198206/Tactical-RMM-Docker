@@ -194,7 +194,7 @@ Log = Log packets ***optional***
 
 Description = HAProxy_HTTP
 
-![Screenshot 2022-03-31 140214](https://user-images.githubusercontent.com/24654529/161130992-8d2af2d4-a448-4b2a-a2dc-f9e01174b85a.png)
+![Screenshot 2022-04-24 094338](https://user-images.githubusercontent.com/24654529/164982082-77ec3c26-f6cb-4c70-9344-bab1e40d381e.png)
 ###
 
 **Save the new rule and apply changes**
