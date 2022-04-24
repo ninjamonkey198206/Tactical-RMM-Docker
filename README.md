@@ -151,7 +151,7 @@ backend mesh-tactical.example.com_ipvANY
 
 ## [Shared HTTP to HTTPS redirect frontend](#shared-http-to-https-redirect-frontend-1)
 
-## [Shared HTTPS frontend]()
+## [Shared HTTPS frontend](#shared-https-frontend-1)
 
 ###
 ## Install HAProxy-devel package
@@ -306,3 +306,14 @@ http-request add-header         X-Real-IP %[src]
 ###
 
 Save and apply changes.
+
+###
+##Shared HTTPS frontend
+###
+
+![Screenshot 2022-04-24 120859](https://user-images.githubusercontent.com/24654529/164988154-d12fb654-effe-410a-a309-b0d54bbe0bb8.png)
+
+![Screenshot 2022-04-24 112830](https://user-images.githubusercontent.com/24654529/164988116-735f9376-a5d5-4190-b563-22937f528324.png)
+
+![Screenshot 2022-04-24 121022](https://user-images.githubusercontent.com/24654529/164988098-5d9de00d-3d04-4ff0-bffe-6cfdc4c14d10.png)
+
