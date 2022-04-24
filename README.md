@@ -52,6 +52,7 @@
 
 4) Log into mesh.example.com and configure 2fa, as well as client remote access settings for notification, permission, etc.
 
+##
 ###
 ## T-RMM HAProxy config, baremetal
 ###
@@ -135,6 +136,7 @@ backend mesh-tactical.example.com_ipvANY
   
   Test access to rmm-tactical.example.com and mesh-tactical.example.com
 
+##
 ###
 ## T-RMM HAProxy config, PFSense
 ###
