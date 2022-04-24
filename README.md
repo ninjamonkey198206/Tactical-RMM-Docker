@@ -156,8 +156,8 @@ backend mesh-tactical.example.com_ipvANY
 
 ![Screenshot 2022-03-31 130322](https://user-images.githubusercontent.com/24654529/161121985-953e24a6-bcaa-418d-a1e4-1ef62a193623.png)
 ###
-###
 
+###
 ### Firewall configuration
 ###
 
@@ -198,8 +198,42 @@ Description = HAProxy_HTTP
 ###
 
 **Save the new rule and apply changes**
+
+**Copy the HTTP rule, changing the TO and From ports to 443 and the description to HAProxy_HTTPS**
+
+**Save the new rule and apply changes**
 ###
 
-**Create a duplicate rule, changing the port to 443 and the description for HTTPS**
+###
+### Shared HTTP to HTTPS redirect frontend 
+###
 
-**Enable the new rules.**
+**Go to the Frontend tab. Click the button to add a new frontend.**
+
+**This shared http frontend will redirect all configured entries to their HTTPS equivalent and allow SSL offloading, as well as both internal and external access to the sites/services via URL.**
+
+Fill in the entries as shown in the screen capture below:
+
+![Screenshot 2022-03-31 144739](https://user-images.githubusercontent.com/24654529/161137213-1c992c70-c608-48f9-b2ec-6ba3f8852bb1.png)
+
+Scroll to the section titled "Default backend, access control lists and actions" and in the Action Control lists area click the down arrow to create a new acl for your server. Enter the hostname in the Name field, change the Expression to Host matches, and enter the FQDN of the website/service into the Value field.
+
+![Screenshot 2022-03-31 145213](https://user-images.githubusercontent.com/24654529/161138441-db439999-e8f7-46cb-b4ac-ac324e9983a9.png)
+
+Scroll down to the Actions area of the section and click the down arrow to create a new action. In the Action field, select http-request redirect, enter scheme https into the rule field, and enter the hostname into the Condition acl names field.
+
+![Screenshot 2022-03-31 145855](https://user-images.githubusercontent.com/24654529/161139297-01ebd984-a571-41c0-8cd0-f48dfb0e0b1b.png)
+
+Scroll down and select None for the Default Backend.
+
+![Screenshot 2022-03-31 150034](https://user-images.githubusercontent.com/24654529/161139524-65658f7a-11ca-454d-adae-861954dcac9f.png)
+
+Scroll down to the Advanced settings section. Tick the Use "forwardfor" option box, select http-server-close for Use "httpclose" option, and add/copy-paste
+```text
+http-request add-header         X-Real-IP %[src]
+```
+to the Advanced pass thru text box.
+
+![Screenshot 2022-03-31 150416](https://user-images.githubusercontent.com/24654529/161140094-cd0082e0-24b6-4710-817c-6f9a8a59ef75.png)
+
+Save and apply changes.
