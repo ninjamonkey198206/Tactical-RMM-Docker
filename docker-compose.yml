@@ -13,6 +13,8 @@ networks:
           gateway: ${PROXY_GATEWAY}
   api-db:
     driver: bridge
+    driver_opts:
+      com.docker.network.bridge.name: trmmnats
     ipam:
       driver: default
       config:
