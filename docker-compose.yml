@@ -87,7 +87,8 @@ services:
       TRMM_PASS: ${TRMM_PASS}
     depends_on:
       - tactical-postgres
-      - tactical-meshcentral    
+      - tactical-meshcentral
+      - tactical-redis
     networks:
       - api-db
       - proxy
